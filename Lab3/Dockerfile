@@ -3,7 +3,7 @@ FROM ubuntu
 COPY . /app
 WORKDIR /app
 
-RUN set -eu \
+RUN set -ex \
     && apt-get update && apt-get install -y \
     python3.8 \
     python3-pip \
