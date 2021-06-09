@@ -19,7 +19,8 @@ services:
 
   downloadder_bot:
     build: ./
-    container_name: bot
+    image: genmiha/isp_4
+    container_name: gen4
     restart: always
     environment:
       API_TOKEN: "${API_TOKEN}"
