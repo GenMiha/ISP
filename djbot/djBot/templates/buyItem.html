@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titlename %}
+Buy item
+{% endblock %}
+
+
+{% block content %}
+{% if user.creditcard %}
+<table class="centered striped">
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Item Price</th>
+      <th>Item Amount</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ item.name }}</td>
+      <td id="price">{{ item.price }}</td>
+      <td id="amount">1</td>
+      <td id="totals">{{ item.price }}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+ <form method="POST">
+     {% csrf_token %}
+     <div class="row center-align">
+       <div class="col s2">
+         <h6>1</h6>
+       </div>
+       <div class="range-field col s8">
+         <input type="range" name="item-amount" id="item-amount" min="1" value="1" max="{{ item.amount }}" />
+       </div>
+       <div class="col s2">
+         <h6>{{ item.amount }}</h6>
+       </div>
+         <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Buy now</button>
+     </div>
+ </form>
+<script src="{% static 'js/totalPriceCalculations.js' %}"></script>
+{% else %}
+  <p>You don't have a card added to your account. <a href="{% url 'create_card' %}">Add one</a> to continue.</p>
+{% endif %}
+
+{% endblock %}

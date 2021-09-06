@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block titlename %}
+Customers
+{% endblock %}
+
+
+{% block content%}
+<table>
+        <thead>
+          <tr>
+              <th>Customer Name</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            {% for user_item in items %}
+                <tr>
+                    <td>{{ user_item.user.first_name }}</td>
+                    <td>{{ user_item.item.name }}</td>
+                    <td>{{ user_item.item.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

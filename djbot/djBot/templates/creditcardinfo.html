@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block titlename %}
+Card Info
+{% endblock %}
+
+{% block content %}
+  <h2>Your card</h2>
+  {% if user.creditcard %}
+    <p>Card number: **** **** **** {{ user.creditcard.card_number|slice:"-4:" }}</p>
+    <p>Card holder: {{ user.creditcard.card_holder_name }}</p>
+    <p>Expiration Date: {{ user.creditcard.expiration_month|stringformat:"02d" }}/{{ user.creditcard.expiration_year|stringformat:"02d" }}</p>
+    <a class="btn waves-effect waves-light" href="{% url 'update_card' %}">Update Card</a>
+    <a class="btn waves-effect waves-light red" href="{% url 'delete_card' %}">Delete Card</a>
+  {% else %}
+    <p>You don't have a card. Why don't you <a href="{% url 'create_card' %}">add one?</a></p>
+  {% endif %}
+{% endblock %}

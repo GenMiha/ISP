@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block titlename %} {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper row">
+      <div class="col s10 offset-s1">
+        <a href="{% url 'home' %}" class="brand-logo">SHOP</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {% if user.is_authenticated %}
+            <li><a href="#">{{ user.email }}</a></li>
+            <li><a href="{% url 'order_history' %}">history</a></li>
+            <li><a href="{% url 'logout' %}">log out</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}">log in</a></li>
+            <li><a href="{% url 'signup' %}">sign up</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col s10 offset-s1">
+    {% block content %}
+    {% endblock %}
+    </div>
+  </div>
+  <script src="{% static 'js/materialize.js' %}"></script>
+</body>
+</html>

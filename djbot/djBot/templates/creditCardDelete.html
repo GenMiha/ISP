@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titlename %}
+Credit Card Delete
+{% endblock %}
+
+
+{% block content%}
+<div class="center">
+  <h2 class="center-align">Are you sure you want to delete your card? This cannot be reverted later.</h2>
+  <form method="POST" class="col s12">
+    {% csrf_token %}
+    <button class="btn waves-effect waves-light red" id="submit_btn" type="submit" name="action">Yes, I am sure. Delete my card</button>
+  </form>
+</div>
+<script src="{% static 'js/CreditCardUpdateValidation.js' %}"></script>
+{% endblock %}

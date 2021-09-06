@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block titlename %}
+Order History
+{% endblock %}
+
+{% block content %}
+<table class="centered striped">
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Item Price</th>
+      <th>Item Amount</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in object_list %}
+      <tr>
+        <td>{{ order.item.name }}</td>
+        <td>{{ order.item.price }}</td>
+        <td>{{ order.item_amount }}</td>
+        <td>{{ order.total_price }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

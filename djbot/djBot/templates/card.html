@@ -1,0 +1,15 @@
+<div class="card blue-grey darken-1">
+  <div class="card-content white-text">
+    <span class="card-title">{{ item.name }}</span>
+    <p>{{ item.description }}</p>
+    {% if item.rating %}
+      <p>Rating - {{ item.rating }}</p>
+    {% else %}
+      <p>No rating yet</p>
+    {% endif %}
+  </div>
+  <div class="card-action">
+    <a>{{ item.price }} USD</a>
+    <a href="{% url 'buy_item' item.id %}">buy now</a>
+  </div>
+</div>
