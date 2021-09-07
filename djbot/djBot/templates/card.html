@@ -11,5 +11,6 @@
   <div class="card-action">
     <a>{{ item.price }} USD</a>
     <a href="{% url 'buy_item' item.id %}">buy now</a>
+    <a href="{% url 'item_rating' item.id %}">Rate it</a>
   </div>
 </div>

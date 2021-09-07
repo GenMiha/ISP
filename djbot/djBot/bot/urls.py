@@ -15,4 +15,5 @@ urlpatterns = [
     path('logout', views.UserLogoutView.as_view(), name='logout'),
     path('buy/<int:pk>', views.BuyItemView.as_view(), name='buy_item'),
     path('order-history', views.OrderHistoryView.as_view(), name='order_history'),
+    path('rating/<int:pk>', views.ItemRatingView.as_view(), name='item_rating'),
 ]

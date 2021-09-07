@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titlename %}
+Rate item
+{% endblock %}
+
+
+{% block content %}
+<h2 class="center-align">How do you rate this item?</h2>
+ <form method="POST">
+     {% csrf_token %}
+     <div class="row center-align">
+       <div class="col s2">
+         <h6>1</h6>
+       </div>
+       <div class="range-field col s8">
+         <input type="range" name="item-rating" id="item-rating" min="1" value="3" max="5" />
+       </div>
+       <div class="col s2">
+         <h6>5</h6>
+       </div>
+         <button class="btn waves-effect waves-light" id="submit_btn" type="submit">Rate</button>
+     </div>
+ </form>
+{% endblock %}

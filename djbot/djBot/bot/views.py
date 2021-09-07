@@ -179,3 +179,29 @@ class OrderHistoryView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Order.objects.filter(credit_card=self.request.user.creditcard)
+
+
+class ItemRatingView(LoginRequiredMixin, DetailView):
+    template_name = 'rating.html'
+    model = Item
+
+    def post(self, request, *args, **kwargs):
+        item = self.get_object()
+        rating_value = float(request.POST['item-rating'])
+        rating = None
+
+        try:
+            rating = UserRating.objects.get(item=item, user=request.user)
+        except ObjectDoesNotExist:
+            UserRating.objects.create(
+                item=item,
+                value=rating,
+                user=request.user
+            )
+
+            return redirect(reverse_lazy('home'))
+
+        rating.value = rating_value
+        rating.save()
+
+        return redirect(reverse_lazy('home'))
