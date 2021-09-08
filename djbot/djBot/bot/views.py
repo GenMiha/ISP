@@ -171,6 +171,8 @@ class BuyItemView(LoginRequiredMixin, DetailView):
         item.amount = item.amount - amount
         item.save()
 
+        request.user.add(item)
+
         return redirect(reverse_lazy('home'))
 
 
