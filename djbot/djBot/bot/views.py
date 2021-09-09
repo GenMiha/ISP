@@ -172,7 +172,7 @@ class BuyItemView(LoginRequiredMixin, DetailView):
         item.amount = item.amount - amount
         item.save()
 
-        request.user.add(item)
+        request.user.items.add(item)
 
         return redirect(reverse_lazy('home'))
 
@@ -198,7 +198,7 @@ class ItemRatingView(LoginRequiredMixin, DetailView):
         except ObjectDoesNotExist:
             UserRating.objects.create(
                 item=item,
-                value=rating,
+                value=rating_value,
                 user=request.user
             )
 
