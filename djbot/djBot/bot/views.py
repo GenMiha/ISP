@@ -32,7 +32,8 @@ class TestView(LoginRequiredMixin, TemplateView):
                     'name': item.name,
                     'description': item.description,
                     'id': item.id,
-                    'rating': ratings.filter(item=item).aggregate(Avg('value'))['value__avg']
+                    'rating': ratings.filter(item=item).aggregate(Avg('value'))['value__avg'],
+                    'price': item.price
                 }
             )
 

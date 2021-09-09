@@ -7,6 +7,8 @@ WORKDIR /app
 COPY djBot /app
 COPY requirements.txt /app
 COPY entrypoint.sh /app
+COPY async_upload.py /app
+COPY urls.json /app
 
 EXPOSE 8000
 
