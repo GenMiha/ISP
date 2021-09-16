@@ -17,6 +17,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           {% if user.is_authenticated %}
             <li><a href="#">{{ user.email }}</a></li>
+            <li><a href="{% url 'card_info' %}">credit card</a></li>
             <li><a href="{% url 'order_history' %}">history</a></li>
             <li><a href="{% url 'logout' %}">log out</a></li>
           {% else %}
